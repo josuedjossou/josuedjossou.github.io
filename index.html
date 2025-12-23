@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josué Djossou | Economics PhD Student</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Josué Wend-Panga | Economics PhD Student | University of Pittsburgh</title>
+    <meta name="description" content="Josué Wend-Panga is a PhD candidate in Economics at the University of Pittsburgh specializing in development economics, cultural economics, and gender. Research on how cultural institutions affect parental investments and gender discrimination.">
+    <meta name="keywords" content="Josué Wend-Panga, Josué Djossou, Economics PhD, Development Economics, Cultural Economics, Gender Economics, University of Pittsburgh, African School of Economics, Navratri research, vaccination rates, gender discrimination">
+    <meta name="author" content="Josué Wend-Panga">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://josuedjossou.github.io">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://josuedjossou.github.io">
+    <meta property="og:title" content="Josué Wend-Panga | Economics PhD Student">
+    <meta property="og:description" content="PhD candidate in Economics at University of Pittsburgh. Research on development economics, cultural economics, and gender.">
+    <meta property="og:image" content="https://josuedjossou.github.io/photo.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Josué Wend-Panga | Economics PhD Student">
+    <meta name="twitter:description" content="PhD candidate in Economics at University of Pittsburgh. Research on development economics, cultural economics, and gender.">
+    <meta name="twitter:image" content="https://josuedjossou.github.io/photo.png">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -72,6 +94,33 @@
             letter-spacing: 0.5px;
         }
 
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -128,6 +177,7 @@
         section:nth-child(2) { animation-delay: 0.3s; }
         section:nth-child(3) { animation-delay: 0.4s; }
         section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
 
         @keyframes fadeIn {
             to {
@@ -220,22 +270,43 @@
 
         .photo-container {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border: 8px solid var(--white);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .photo-placeholder {
             width: 100%;
-            max-width: 400px;
-            aspect-ratio: 3/4;
+            height: 100%;
             background: linear-gradient(135deg, #e8e8e0 0%, #d4d4c8 100%);
-            border: 8px solid var(--white);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             color: var(--secondary);
-            margin-left: auto;
         }
 
         /* Research Section */
@@ -262,6 +333,7 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--primary);
+            line-height: 1.4;
         }
 
         .paper-status {
@@ -277,11 +349,13 @@
             color: var(--secondary);
             line-height: 1.8;
             margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
 
         .paper-links {
             display: flex;
             gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .paper-link {
@@ -290,10 +364,12 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: opacity 0.3s ease;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
         }
 
         .paper-link:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .research-interests {
@@ -319,6 +395,14 @@
             border: 1px solid var(--border);
             font-size: 0.95rem;
             color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .interest-tag:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* Teaching Section */
@@ -328,6 +412,12 @@
 
         .teaching-item {
             margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .teaching-item:last-child {
+            border-bottom: none;
         }
 
         .teaching-item h3 {
@@ -339,6 +429,7 @@
             color: var(--accent);
             font-size: 0.95rem;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .teaching-item p {
@@ -350,6 +441,12 @@
         #cv {
             background: var(--white);
             text-align: center;
+        }
+
+        #cv p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--secondary);
         }
 
         .cv-download {
@@ -397,6 +494,12 @@
             padding: 2rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
         }
 
         .contact-item h3 {
@@ -407,12 +510,14 @@
 
         .contact-item p {
             color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
         }
 
         .contact-item a {
             color: var(--white);
             text-decoration: none;
             transition: color 0.3s ease;
+            display: inline-block;
         }
 
         .contact-item a:hover {
@@ -431,13 +536,34 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
             nav .container {
                 padding: 1rem 2rem;
             }
 
             .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
             }
 
             .container {
@@ -457,7 +583,7 @@
                 gap: 3rem;
             }
 
-            .photo-placeholder {
+            .photo-frame {
                 max-width: 300px;
                 margin: 0 auto;
             }
@@ -469,14 +595,103 @@
             .paper {
                 padding: 2rem;
             }
+
+            .interests-list {
+                gap: 0.8rem;
+            }
+
+            .interest-tag {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .cv-download {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .container {
+                padding: 1rem 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .paper-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Josué Wend-Panga",
+      "alternateName": "Josué Djossou",
+      "url": "https://josuedjossou.github.io",
+      "image": "https://josuedjossou.github.io/photo.png",
+      "jobTitle": "PhD Candidate in Economics",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "University of Pittsburgh",
+        "department": "Department of Economics"
+      },
+      "alumniOf": [
+        {
+          "@type": "Organization",
+          "name": "African School of Economics"
+        },
+        {
+          "@type": "Organization",
+          "name": "École Supérieure de Commerce et d'Administration des Entreprises"
+        }
+      ],
+      "knowsAbout": [
+        "Development Economics",
+        "Cultural Economics",
+        "Gender Economics",
+        "Applied Microeconomics",
+        "Health Economics"
+      ],
+      "email": "jyd12@pitt.edu",
+      "sameAs": [
+        "https://www.linkedin.com/in/josué-djossou-34527b159/",
+        "https://github.com/josuedjossou"
+      ]
+    }
+    </script>
 </head>
 <body>
     <nav>
         <div class="container">
-            <a href="#home" class="logo">Josué Djossou</a>
-            <ul class="nav-links">
+            <a href="#home" class="logo">Josué Wend-Panga</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#teaching">Teaching</a></li>
@@ -492,19 +707,24 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <div class="subtitle">PhD Candidate in Economics</div>
-                        <h1>Josué<br>Djossou</h1>
+                        <h1>Josué<br>Wend-Panga</h1>
                         <p>
-                            I am a PhD student in Economics at the University of Pittsburgh, 
+                            I am a third-year PhD student in Economics at the University of Pittsburgh, 
                             specializing in applied microeconomics. My research examines questions at 
                             the intersection of development economics, cultural economics, and gender.
-                             I study how cultural factors and social institutions influence economic 
+                        </p>
+                        <p>
+                            I study how cultural factors and social institutions influence economic 
                             decision-making, human capital investments, and labor market outcomes.
+                        </p>
                         <p>
                             I expect to be on the job market in <strong>Fall 2027</strong>.
                         </p>
                     </div>
                     <div class="photo-container">
-                        <img src="photo.png" alt="Josué Wend-Panga" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="photo-frame">
+                            <img src="photo.png" alt="Josué Wend-Panga" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Your Photo Here</div>'">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -518,7 +738,6 @@
                     <div class="paper-title">
                         Goddess Worship and Parental Investment: Evidence from Navratri and Vaccination Rates in India
                     </div>
-                    <div class="paper-status">Working Paper</div>
                     <div class="paper-abstract">
                         This paper examines how exposure to cultural festivals celebrating female deities 
                         affects parental investments in daughters' health. Using administrative data on 
@@ -531,7 +750,8 @@
                         outcomes and gender inequality.
                     </div>
                     <div class="paper-links">
-                        <a href="navratri-paper.pdf" class="paper-link">Download PDF</a>
+                        <a href="navratri-paper.pdf" class="paper-link">Download Paper</a>
+                        <a href="slides.pdf" class="paper-link">Slides</a>
                     </div>
                 </div>
 
@@ -540,7 +760,7 @@
                     <div class="interests-list">
                         <span class="interest-tag">Development Economics</span>
                         <span class="interest-tag">Cultural Economics</span>
-                        <span class="interest-tag">Applied Microeconomics</span>
+                        <span class="interest-tag">Gender Economics</span>
                     </div>
                 </div>
             </div>
@@ -554,27 +774,18 @@
                     <h3>University of Pittsburgh</h3>
                     <div class="teaching-meta">Teaching Assistant | Department of Economics</div>
                     <p>
-                        Introduction to Macroeconomics - Fall 2025<br>
-                        Introduction to Microeconomics - Spring 2025, Fall 2024
+                        Introduction to Macroeconomics (Fall 2024)<br>
+                        Introduction to Microeconomics (Spring 2024, Fall 2023)
                     </p>
                 </div>
 
                 <div class="teaching-item">
-                     <h3>African School of Economics</h3>
-                    <div class="teaching-meta">Instructor</div>
+                    <h3>African School of Economics</h3>
+                    <div class="teaching-meta">Teaching Assistant & Associate</div>
                     <p>
-                        Introduction to Stata and R - Spring 2023, Fall 2022, Spring 2022, Fall 2021<br>
-                        Introduction to QGIS and LaTeX - Spring 2023, Fall 2022, Spring 2022, Fall 2021<br>
-                        Computing Camp - Spring 2023, Fall 2022, Spring 2022, Fall 2021
-                    </p>
-
-                    <br>
-
-                    <div class="teaching-meta">Teaching Assistant</div>
-                    <p>
-                        Econometrics II (Graduate) - Summer 2021<br>
-                        Qualitative Data Analysis - Summer 2021<br>
-                        Impact Evaluation - Summer 2021
+                        Introduction to Stata, R, QGIS and LaTeX (Fall 2022, Fall 2021)<br>
+                        Econometrics II (Graduate) — TA to Gábor Nyéki (Summer 2021)<br>
+                        Qualitative Data Analysis — TA to Andre Gueguehoun (Summer 2021)
                     </p>
                 </div>
             </div>
@@ -583,11 +794,11 @@
         <section id="cv">
             <div class="container">
                 <h2>Curriculum Vitae</h2>
-                <p style="margin-bottom: 3rem; color: var(--secondary);">
+                <p>
                     Download my complete CV for detailed information about my education, 
-                    research, teaching, and presentations.
+                    research, teaching experience, and academic presentations.
                 </p>
-                <a href="#" class="cv-download">
+                <a href="cv.pdf" class="cv-download">
                     <span>Download CV</span>
                     <span>↓</span>
                 </a>
@@ -625,10 +836,27 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Josué Djossou. All rights reserved.</p>
+        <p>&copy; 2025 Josué Wend-Panga. All rights reserved.</p>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
